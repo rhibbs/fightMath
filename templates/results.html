@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fight Math Search</title>
+    </head>
+    <body>
+        <h1>UFC Fighter Search</h1>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            {% for fighter in fighter1_list %}
+            <tr>
+                <td>{{ fighter[0] }}</td>
+                <td>{{ fighter[1] }}</td>
+                <td><a href="{{ fighter[2] }}">{{ fighter[2] }}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            {% for fighter in fighter2_list %}
+            <tr>
+                <td>{{ fighter[0] }}</td>
+                <td>{{ fighter[1] }}</td>
+                <td><a href="{{ fighter[2] }}">{{ fighter[2] }}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
