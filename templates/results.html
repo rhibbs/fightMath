@@ -9,24 +9,32 @@
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th> Wins  </th>
+                <th>  Losses  </th>
             </tr>
             {% for fighter in fighter1_list %}
             <tr>
                 <td>{{ fighter[0] }}</td>
                 <td>{{ fighter[1] }}</td>
+                <td>{{ fighter[3] }}</td>
+                <td>{{ fighter[4] }}</td>
                 <td><a href="{{ fighter[2] }}">{{ fighter[2] }}</a></td>
             </tr>
             {% endfor %}
         </table>
         <table>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>First Name  </th>
+                <th>Last Name  </th>
+                <th> Wins  </th>
+                <th>  Losses  </th>
             </tr>
             {% for fighter in fighter2_list %}
             <tr>
                 <td>{{ fighter[0] }}</td>
                 <td>{{ fighter[1] }}</td>
+                <td>{{ fighter[3] }}</td>
+                <td>{{ fighter[4] }}</td>
                 <td><a href="{{ fighter[2] }}">{{ fighter[2] }}</a></td>
             </tr>
             {% endfor %}

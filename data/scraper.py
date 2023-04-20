@@ -26,7 +26,11 @@ async def scrape_fighters(fighter_name):
                 link = row.find('a').get('href')
                 first = name_cells[0].a.text
                 last = name_cells[1].a.text
-                results.append((first,last,link))
+                wins = name_cells[7].text
+                losses = name_cells[8].text
+                results.append((first,last,link,wins,losses))
+                #print(f"wins: {wins}")
+                #print(f"losses: {losses}")
                 #print(f"First name: {first}")
                 #print(f"Last name: {last}")
                 #print(f"link : {link}")

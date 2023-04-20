@@ -16,8 +16,8 @@ async def result():
     print(f"fighter2 Value is {fighter2}")
     fighter1_list = await scrape_fighters(fighter1)
     fighter2_list = await scrape_fighters(fighter2)
-    print(f"fighter1_list Value is {fighter1_list}")
-    print(f"fighter2 list is {fighter2_list}")
+    #print(f"fighter1_list Value is {fighter1_list}")
+    #print(f"fighter2 list is {fighter2_list}")
     return render_template('results.html', fighter1_list=fighter1_list, fighter2_list = fighter2_list)
 
 if __name__ == '__main__':
