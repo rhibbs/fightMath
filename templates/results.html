@@ -3,33 +3,86 @@
     <head>
         <title>Fight Math Search</title>
     </head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .column {
+            width: 40%;
+        }
+        .table {
+            width: 100%;
+        }
+    </style>
     <body>
+        <div class="column">
+
         <h1>UFC Fighter Search</h1>
+        <form method="post" id="selections" action="{{ url_for('common_fighters')}}">
         <table>
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th> Wins  </th>
+                <th>  Losses  </th>
             </tr>
             {% for fighter in fighter1_list %}
             <tr>
-                <td>{{ fighter[0] }}</td>
+                <td><input type="checkbox" name="checkbox_fighter1" value="{{ fighter[2] }}">{{ fighter[0] }}</td>
                 <td>{{ fighter[1] }}</td>
-                <td><a href="{{ fighter[2] }}">{{ fighter[2] }}</a></td>
+                <td>{{ fighter[3] }}</td>
+                <td>{{ fighter[4] }}</td>
             </tr>
             {% endfor %}
         </table>
         <table>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>First Name  </th>
+                <th>Last Name  </th>
+                <th> Wins  </th>
+                <th>  Losses  </th>
             </tr>
             {% for fighter in fighter2_list %}
             <tr>
-                <td>{{ fighter[0] }}</td>
+                <td><input type="checkbox" name="checkbox_fighter2" value="{{ fighter[2] }}">{{ fighter[0] }}</td>
                 <td>{{ fighter[1] }}</td>
-                <td><a href="{{ fighter[2] }}">{{ fighter[2] }}</a></td>
+                <td>{{ fighter[3] }}</td>
+                <td>{{ fighter[4] }}</td>
             </tr>
             {% endfor %}
         </table>
+        <br>
+        <input type="submit" value="submit" >
+    </form>
+    </div>
+    <div class="column">
+        <!-- Results side of Page -->
+        <h1>Common Opponents</h1>
+    </div>
     </body>
 </html>
+<script>
+    const form = document.getElementById('selections');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const fighter1 = formData.get('fighter1');
+      const fighter2 = formData.get('fighter2');
+      fetch('/result', {
+        method: 'POST',
+        body: JSON.stringify({fighter1: fighter1, fighter2: fighter2}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.text())
+      .then(html => {
+        const resultPage = document.createElement('html');
+        resultPage.innerHTML = html;
+        document.documentElement.replaceWith(resultPage);
+      })
+      .catch(error => console.error(error));
+    });
+  </script>
